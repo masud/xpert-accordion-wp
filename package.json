@@ -1,0 +1,42 @@
+{
+  "name": "xpertaccordion",
+  "title": "XpertAccordion",
+  "description": "Lightweight accordion shortcode plugin for wordpress",
+  "version": "1.0.0",
+  "homepage": "http://www.themexpert.com",
+  "author": {
+    "name": "ThemeXpert",
+    "email": "info@themexpert.com",
+    "url": "http://www.themexpert.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/themexpert/xpert-accordion-wp"
+  },
+  "licenses": [
+    {
+      "type": "GPLv2",
+      "url": ""
+    }
+  ],
+
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-concat": "^2.3.4",
+    "gulp-header": "^1.0.5",
+    "gulp-ignore": "^1.2.0",
+    "gulp-less": "latest",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.4.0",
+    "gulp-tap": "latest",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "latest",
+    "gulp-watch": "^0.6.9",
+    "gulp-zip": "^2.0.2",
+    "gulp-livereload": "latest",
+    "mkdirp": "latest",
+    "run-sequence": "^0.3.6"
+  },
+  "keywords": []
+}
