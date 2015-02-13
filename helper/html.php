@@ -2,22 +2,39 @@
 
 abstract class Html {
 
-	public static function getIcons()
+	public static function getMediaButtion()
 	{
-		$icons = array(
-		'fontawesome' => array(
-			'Select Title Icon' => '',
-			'facebook' => '&#xf082; ', 
-			'twitter' => '&#xf081; ', 
-			'dribbble' => '&#xf17d; ',
-			),
-		);		
+		$html = '<a href="#" id="xa-media" class="btn button" data-toggle="modal" data-target="#exampleModal">XpertAccordion</a>';
 
-
-		return $icons; 
+		return $html;
 	}
 
-	public static function get_modal_header()
+	public static function getModal()
+	{
+		$html = array();
+
+		$html[] = '<div class="tx">';
+			$html[] = '<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+				$html[] = '<div class="modal-dialog">';
+					$html[] = '<div class="modal-content">';
+						$html[] = self::getModalHeader();
+						$html[] = '<div class="modal-body">';
+							$html[] = '<button type="button" class="btn btn-success action-new">Add New</button>';
+							$html[] = self::getPresetStyles();
+							$html[] = self::getRepeatable();
+							//	$html[] = Html::get_icons_list();
+							///$html[] = Html::get_body_form_footer();
+							$html[] = '</div>';
+							$html[] = self::getModalFooter();
+						$html[] = '</div>';
+				$html[] = '</div>';
+			$html[] = '</div>';
+		$html[] = '</div>';
+
+		return implode('', $html);
+	}
+
+	public static function getModalHeader()
 	{
 		$html = '<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -27,7 +44,7 @@ abstract class Html {
 		return $html;
 	}
 
-	public static function get_preset_styles(){
+	public static function getPresetStyles(){
 		$html = '<select class="form-control pull-right preset_select" >
 					<option value="ms_default" selected >Select Styles</option>
 					<optgroup label="Bootstrap Styles">
@@ -46,7 +63,7 @@ abstract class Html {
 		return $html;
 	}
 
-	public static function get_body_form_header()
+	public static function getRepeatable()
 	{
 		$html = '<div id="repeatable" class="panel-group" role="tablist"><br>
 				<div class="panel panel-default clonable">
@@ -72,7 +89,7 @@ abstract class Html {
 
                                         <div class="col-md-4">
                                         	<label for="icon">Icon</label>
-                                        	' . self::get_icons_list() . '
+                                        	' . self::getIconLists() . '
 									    </div>
 									  </div>
 									  <div class="row">
@@ -90,7 +107,7 @@ abstract class Html {
 		return $html;
 	}
 
-	public static function get_modal_footer()
+	public static function getModalFooter()
 	{
 		$html = ' <div class="modal-footer">
 			        <button type="button" class="btn btn-success pull-left submit_inputs" data-dismiss="modal">Insert</button>
@@ -99,26 +116,11 @@ abstract class Html {
 	    return $html;
 	}
 
-	/*public static function get_icons_list()
-	{
-		$html = array();
-		$icons = self::getIcons();
-
-		$html[] = '<select class="form-control chosen" style="font-family: \'FontAwesome\'">';
-			foreach ($icons['fontawesome'] as $icon => $content )
-			{
-				$html[] = '<option value="'. $icon .'"> ' . $content .  $icon . '</option>';
-			}
-		$html[] = '</select>';
-
-		return implode('', $html);
-	}*/
-
-	public static function get_icons_list()
+	public static function getIconLists()
 	{
 		$html = array();
 		
-		include_once 'icons.php';
+		include_once 'helper/icons.php';
 
 		$html[] = '<select class="form-control chosen" style="font-family: \'FontAwesome\'">';
 			foreach ($icons['fontawesome'] as $icon => $content )
