@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload');
 
 gulp.task('compile', function(){
-	gulp.src('assets/less/**/.less')
+	gulp.src('assets/less/**/*.less')
 		.pipe( less() )
 		.pipe( gulp.dest('assets/css') )
 		.pipe(livereload());
@@ -23,6 +23,7 @@ gulp.task('compile', function(){
  });*/
 //Watch Task
 gulp.task('watch',function(){
-	livereload.listen();
+
 	gulp.watch('assets/less/*.less',['compile']);
+	livereload.listen();
 });
