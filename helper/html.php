@@ -41,19 +41,18 @@ abstract class Html {
 	}
 
 	public static function getPresetStyles(){
-		$html = '<select class="form-control pull-right preset_select" >
-					<option value="ms_default" selected >Select Styles</option>
+		$html = '<select class="pull-right presets" >
+					<option value="xa-default" selected >Select Styles</option>
 					<optgroup label="Bootstrap Styles">
-					  <option value="ms_green">Bootstrap Success</option>
-					  <option value="ms_blue">Bootstrap Infro</option>
-					  <option value="ms_yellow" >Bootstrap Warning</option>
-					  <option value="ms_red" >Bootstrap Danger</option>
-					 
-				  </optgroup>
-				  <optgroup label="ThemeXpert Styles">
-				  <option value="tx-style1">Style 1</option>
-				  <option value="tx-style2">Style 2</option>
-				  </optgroup>
+						<option value="xa-green">Bootstrap Success</option>
+					  	<option value="xa-blue">Bootstrap Infro</option>
+					  	<option value="xa-yellow" >Bootstrap Warning</option>
+					  	<option value="xa-red" >Bootstrap Danger</option>
+				  	</optgroup>
+				  	<optgroup label="ThemeXpert Styles">
+				  		<option value="xa-style1">Style 1</option>
+				  		<option value="xa-style2">Style 2</option>
+				  	</optgroup>
 				</select>';
 
 		return $html;
@@ -67,7 +66,7 @@ abstract class Html {
 						<h4 class="panel-title">
 						  <a class="collapsed" data-toggle="collapse"  data-parent="#repeatable" href="#acc-1" aria-expanded="false" aria-controls="acc-1">
 							<span class="fa fa fa-bars action-drag"></span>
-							<i class="fa fa-default" id="title-icon"></i>
+							<i id="title-icon"></i>
 							<span class="tx-title">New Item</span>
 						  </a>
 						  <span class="btn fa fa-times action-remove pull-right"></span>
@@ -111,7 +110,7 @@ abstract class Html {
 		
 		include_once 'icons.php';
 
-		$html[] = '<select class="chosen" style="font-family: \'FontAwesome\'">';
+		$html[] = '<select class="icons" style="font-family: \'FontAwesome\'">';
 			foreach ($icons['fontawesome'] as $icon => $content )
 			{
 				$html[] = '<option class="fa fa-'.$icon.'" value="'. $icon .'"> ' .$icon .'</option>';

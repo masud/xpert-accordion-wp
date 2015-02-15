@@ -1,83 +1,92 @@
 (function ($){
-	
-	// var init = function($el) {
- //    $('.chosen', $el).selectize({
- //        sortField: 'text'
- //    });
- //  };
 
-	$(document).ready(function(){
+	// Init function for selectize to work each time we clone a panel
+	var init = function($el) {
+		$('.icons', $el).selectize({
+			sortField: 'text'
+		});
+   	};
 
-//___Start for cloning Text Panel___//
+	$(document).ready(function()
+	{
+		$template = $('.clonable').clone();
 
-		$('.action-new').on('click', function(e){
-		// e.preventDetault();
+		//___Start for cloning Text Panel___//
+		$('.action-new').on('click', function()
+		{
+			var randomId = Math.floor( Math.random() * 100) +1,
+				newId = 'acc-' + randomId;
 
-		var cloned = $('.clonable').html();
+			$template.removeClass('clonable');
+			$template.find('.in').removeClass('in');
+			// Assign random id and attr for newly added panel
+			$template.find('#acc-1').attr('id', newId);
+			$template.find('[href=#acc-1]').attr('href', '#' + newId);
 
+			$('#repeatable').append($template);
+			init( $template );
+		});
 
-		$('#repeatable').append( cloned ).eq(1);
+		// Init body now
+		init(document.body);
 
-		var randomId = Math.floor( Math.random() * 100) +1,
-			newId = 'acc-' + randomId;
-
-		cloned.find('#acc-1').attr('id', newId);
-		cloned.find('[href=#acc-1]').attr('href', '#' + newId);
-		// init( cloned );
-		$('.chosen').chosen();
-	});
-		
-//___End for Cloning Text Panel___//
-
-//__Start for draggin Panel__//
-
-
-		$( "#repeatable" ).sortable({      
+		//__Start for draggin Panel__//
+		$( "#repeatable" ).sortable({
        		 revert: true
-    		});
-     
-   		 
-//__End for draggin Panel__//
+		});
 
+		//___Start Panel Remove___//
+		$(document).on('click', '.action-remove', function(){
+			var panel = $(this).closest('.panel'),
+				totalPanel = $('#repeatable').find('.panel').length;
 
+			if (totalPanel != 1)
+			{
+				var result = confirm("Are Your sure");
+				if(result == true)
+				{
+					panel.remove();
+				}
+
+			}else
+			{
+				alert("Hey Dude! You can't delete last item :)");
+			}
+		});
+		//___Start Live change Title___//
+		$(document).on('keyup', '.title', function(){
+			var newValue = $(this).val();
+			$(this).closest('.panel').find('.panel-title > a  > .tx-title').text(newValue);
+		});
+
+		//___Start Icon change___//
+		$(document).on('change', '.icons', function(){
+			var newIcon = $('i').attr('class');
+			var newIconChange = $(this).val();
+
+			if(newIcon!==newIconChange){
+				$(this).closest('.panel').find('#title-icon').removeClass(newIcon);
+				$(this).closest('.panel').find('#title-icon').addClass('fa fa-' + newIconChange);
+			}
+		});
+
+		//___Start Insert into Editor Panel___//
+
+		$(document).on('click','.action-insert',function(){
+			var $presets = $('.presets').val(),
+				$acc = $title = $content = $icon = '';
+
+			$('.panel').each(function(){
+				$title 		= $(this).find('.title').val(),
+				$content	= $(this).find('.content').val(),
+				$icon 		= $(this).find('.icons').val();
+
+				$acc += '[xa_slide title="' + $title + '" icon="' + $icon + '"]' + $content + '[/xa_slide]';
+			});
+			wp.media.editor.insert('[xa_acc style="'+ $presets +'" ]' + $acc + '[/xa_acc]');
+
+		});
 	});
-// init(document.body);
-//___Start Panel Remove___//
-// $(document).on('click', '.action-remove', function(){
-// 	//$('.panel').each(function(){
-
-//       var panel = $(this).closest('.panel');
-//       var panelnum = $('#repeatable').find('.panel').length;
-//       var classCheck = $('.panel-default').attr('class');
-//       if ( panelnum != 1 )
-//       {
-//       	confrimId = confirm("Are Your sure");
-// 	    if(confrimId===true){
-// 		 panel.remove();
-// 		}
-         
-//       }else {
-//       	alert("Hey Dude! You can't delete single item :)");
-//       }
-     
-// });
-
-//___End  Panel Remove___//
-
-
-// $(document).on('change', '.chosen', function(){		
-	
-// 	var newIcon = $('i').attr('class');
-// 	var newIconChange = $(this).val();
-
-// 	if(newIcon!==newIconChange){
-// 	$(this).closest('.panel').find('#ms_title_icon').removeClass(newIcon);
-// 	$(this).closest('.panel').find('#ms_title_icon').addClass('fa fa-' + newIconChange);
-
-// 	}
-
-// });
-
 
 // $(document).on('change', '.preset_select', function(){		
 	
@@ -93,43 +102,7 @@
 // });
 //___Admin Style Change___//
 
-//___Start Live change Title___//
-
-// $(document).on('keyup', '.title', function(){		
-// 	var newValue = $(this).val();
-// 	$(this).closest('.panel').find('.panel-title > a  > .ms_title').text(newValue);
-// });
-
-//___End  Live change Title___//
 
 
-
-//___Start Insert into Editor Panel___//	
-	
-// $(document).on('click','.submit_inputs',function(){
-// 	var title = $('.title').val();
-// 	var presets = $('.preset_select').val();
-	
-
-// 	//var descpription = $('.content_area').val();
-// 	var acc ='';
-
-
-// 	$('.panel').each(function(){
-
-// 		var panel_title = $(this).find('.title').val(),
-// 			panel_content = $(this).find('.content_area').val(),
-// 			panel_icon = $(this).find('.chosen').val();
-			
-// 			acc += '[ms_acc_slide title="' + panel_title + '" icon="fa fa-' + panel_icon + '"]' + panel_content + '[/ms_acc_slide]';
-
-// 	});
-
-	
-
-// 	wp.media.editor.insert('[ms_acc preset="'+ presets +'" ]' + acc + '[/ms_acc]');
-
-	
-// });
 
 })(jQuery);

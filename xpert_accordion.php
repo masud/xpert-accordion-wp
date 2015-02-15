@@ -109,6 +109,12 @@ final class TX_XpertAccordion
 		);
 
 		wp_enqueue_script(
+			TX_PREFIX .'-selectize',
+			plugins_url('assets/vendor/selectize/js/standalone/selectize.js', __FILE__),
+			array()
+		);
+
+		wp_enqueue_script(
 			TX_PREFIX .'-app',
 			plugins_url('assets/js/app.js', __FILE__),
 			array()
