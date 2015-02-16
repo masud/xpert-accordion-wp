@@ -9,7 +9,7 @@
 
 	$(document).ready(function()
 	{
-		$template = $('.clonable').clone();
+		var $template = $('.clonable').clone();
 
 		//___Start for cloning Text Panel___//
 		$('.action-new').on('click', function()
