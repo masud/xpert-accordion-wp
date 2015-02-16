@@ -41,7 +41,7 @@ abstract class Html {
 	}
 
 	public static function getPresetStyles(){
-		$html = '<select class="pull-right presets" >
+		$html = '<select class="pull-right presets uninit" >
 					<option value="xa-default" selected >Select Styles</option>
 					<optgroup label="Bootstrap Styles">
 						<option value="xa-green">Bootstrap Success</option>

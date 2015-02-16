@@ -954,7 +954,10 @@ button.close {
   border-top: 0 none;
 }
 .selectize-input {
-  padding: 5px 8px;
+  padding: 0 8px;
+}
+.clonable {
+  display: none;
 }
 [class*='width-'],
 [class^='width-'] {
