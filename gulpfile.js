@@ -19,4 +19,4 @@ gulp.task('watch',function(){
   livereload.listen();
 });
 
-  gulp.task('default',['compile','watch']);
+  gulp.task('default',['watch']);
