@@ -42,7 +42,6 @@ gulp.task('minifyjs', function(){
       .pipe( gulp.dest('assets/js'))
 
 });
-
  
 
 //Watch Task
