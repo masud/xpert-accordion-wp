@@ -1,13 +1,13 @@
 <?php
 /*
-  	Plugin Name: Xpert Accordion
-  	Plugin URI: http://themexpert.com/wordpress-plugins/xpert-accordion
-  	Version: 0.0.1
-  	Author: ThemeXpert
-  	Authro URI : http://www.themexpert.com
-  	Description: Supercharge your WordPress accordion plugin
-	License: GPLv2 or later
-	Text Domain: xa
+Plugin Name: Xpert Accordion
+Plugin URI: http://themexpert.com/wordpress-plugins/xpert-accordion
+Version: 0.0.1
+Author: ThemeXpert
+Authro URI : http://www.themexpert.com
+Description: Supercharge your WordPress accordion plugin
+License: GPLv2 or later
+Text Domain: xa
  */
 
 /*
@@ -69,7 +69,7 @@ final class TX_XpertAccordion
 	{
 		wp_enqueue_style(
 			TX_PREFIX . '-fontawesome',
-			plugins_url('assets/vendor/fontawesome/css/font-awesome.min.css', __FILE__),
+			plugins_url('assets/vendor/font-awesome/css/font-awesome.min.css', __FILE__),
 			array()
 		);
 
