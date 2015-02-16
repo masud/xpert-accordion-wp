@@ -20,9 +20,8 @@ gulp.task('compile', function(){
 
 //__minify css file__//
 gulp.task('minifycss', function(){
-
-              
-         gulp.src('assets/css/**/*.css')
+      
+         gulp.src(['assets/css/**/*.css', '!assets/css/**/*.min.css'])
             //minify files
             .pipe(rename({suffix: '.min'}))
             .pipe(minifycss())
@@ -36,7 +35,7 @@ gulp.task('minifycss', function(){
 //__minify js file__
 gulp.task('minifyjs', function(){
 
-    gulp.src('assets/js/**/*.js')
+    gulp.src(['assets/js/**/*.js', '!assets/js/**/*.min.js'])
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
       .pipe( gulp.dest('assets/js'))
