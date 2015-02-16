@@ -15,7 +15,7 @@ function accordion_shortcode($attr, $content= null){
 	return '<div class="panel-group '.$data['preset'].'"  id="accordion" role="tablist" aria-multiselectable="true">
 '.$content.'</div>';
 }
-add_shortcode('ms_acc','accordion_shortcode');
+add_shortcode('xa_acc','accordion_shortcode');
 
 
 function accordion_shortcode_nested($attr, $content= null){
@@ -36,7 +36,7 @@ function accordion_shortcode_nested($attr, $content= null){
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#acc-'.$rand.'" aria-expanded="true" aria-controls="collapseOne">
-          <i class="'.$data['icon'].'"></i> '.$data['title'].'
+          <i class="fa fa-'.$data['icon'].'"></i> '.$data['title'].'
         </a>
       </h4>
     </div>
@@ -46,7 +46,7 @@ function accordion_shortcode_nested($attr, $content= null){
     </div>
   </div>';
 }
-add_shortcode('ms_acc_slide','accordion_shortcode_nested');
+add_shortcode('xa_slide','accordion_shortcode_nested');
 
 
 
