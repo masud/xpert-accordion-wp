@@ -22,7 +22,7 @@ gulp.task('compile', function(){
 gulp.task('minifycss', function(){
 
               
-         gulp.src('assets/css/**/app.css')
+         gulp.src('assets/css/**/*.css')
             //minify files
             .pipe(rename({suffix: '.min'}))
             .pipe(minifycss())
@@ -36,7 +36,7 @@ gulp.task('minifycss', function(){
 //__minify js file__
 gulp.task('minifyjs', function(){
 
-    gulp.src('assets/js/app.js')
+    gulp.src('assets/js/**/*.js')
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
       .pipe( gulp.dest('assets/js'))
